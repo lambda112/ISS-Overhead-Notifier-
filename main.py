@@ -1,6 +1,7 @@
 import requests 
 import datetime as dt
 import smtplib
+from time import sleep
 
 MY_LAT = 51.5123
 MY_LONG = 0.0910
@@ -36,6 +37,7 @@ def check_times():
     
     return is_night
 
+
 # Check to see if overhead current location
 def check_position():
     is_overhead = False
@@ -46,8 +48,17 @@ def check_position():
 
     return is_overhead
 
+
+# Send email
 def send_email():
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
         connection.login(user="lambdaa112@gmail.com", password="moyn eugt kmga xrck")
-        connection.sendmail(from_addr="lambdaa112@gmail.com", to_addrs="lambdaa112@gmail.com")
+        connection.sendmail(from_addr="lambdaa112@gmail.com", to_addrs="lambdaa112@gmail.com", msg = "Subject:ISS Nearby\n\nIncoming ISS at your location")
+
+
+# Email is sent if both checks found true
+if __name__ == "__main__":
+    if check_position() and check_times():
+        send_email()
+        sleep(60)
