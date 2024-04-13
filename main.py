@@ -53,7 +53,7 @@ def check_position():
 def send_email():
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user="lambdaa112@gmail.com", password="moyn eugt kmga xrck")
+        connection.login(user="lambdaa112@gmail.com", password="xxxxx")
         connection.sendmail(from_addr="lambdaa112@gmail.com", to_addrs="lambdaa112@gmail.com", msg = "Subject:ISS Nearby\n\nIncoming ISS at your location")
 
 
